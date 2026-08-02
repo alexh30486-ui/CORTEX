@@ -1,0 +1,39 @@
+# --- API / orchestration ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+
+# --- ingestion ---
+pypdf==4.3.1
+python-docx==1.1.2
+pytesseract==0.3.13          # requires system tesseract-ocr installed
+Pillow==10.4.0
+openai-whisper==20231117     # CPU works, just slower; swap model size in config
+
+# --- PII / secret scrubbing ---
+presidio-analyzer==2.2.354
+presidio-anonymizer==2.2.354
+spacy==3.7.5
+# after install, run: python -m spacy download en_core_web_lg
+
+# --- retrieval ---
+sentence-transformers==3.1.1
+chromadb==0.5.5
+rank-bm25==0.2.2
+
+# --- SLM serving + fine-tuning ---
+llama-cpp-python==0.2.90      # CPU inference of GGUF models
+transformers==4.44.2
+peft==0.12.0                  # LoRA
+datasets==2.21.0
+torch==2.4.1                  # CPU build is fine: pip install torch --index-url https://download.pytorch.org/whl/cpu
+accelerate==0.34.2
+bitsandbytes==0.43.3          # optional, mostly no-ops on CPU but keeps API consistent
+
+# --- security ---
+better-profanity==0.7.0       # placeholder rough filter, will be replaced by injection classifier
+
+# --- utils ---
+python-dotenv==1.0.1
+tqdm==4.66.5
+pandas==2.2.2
